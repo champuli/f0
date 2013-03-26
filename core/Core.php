@@ -6,6 +6,9 @@ class Core{
     public $view;
 
     public function run() {
-    echo "function run";    
+        $this->request = new Request();
+        $this->routing = new Routing();
+        $this->controller = new Controller();
+        $this->view = new View();
     }
 }
