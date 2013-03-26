@@ -1,14 +1,31 @@
 <?php
 class Core{
-    public $request;
-    public $routing;
-    public $controller;
-    public $view;
+    protected $request;
+    protected $routing;
+    protected $controller;
+    protected $view;
+    
+    private static $_instance;
 
+    private function __construct() {
+        $this->request      = new Request();
+        $this->routing      = new Routing();
+        $this->controller   = new Controller();
+        $this->view         = new View();
+    }
+    
+    private function __clone() {
+    }
+
+    protected static function getInstance()
+    {
+        if (null === self::$_instance) {
+            self::$_instance = new self();
+        }
+        return self::$_instance; 
+    }
+    
     public function run() {
-        $this->request = new Request();
-        $this->routing = new Routing();
-        $this->controller = new Controller();
-        $this->view = new View();
+        echo print_r(self::getInstance());
     }
 }
