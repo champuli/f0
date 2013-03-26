@@ -8,24 +8,41 @@ class Core{
     private static $_instance;
 
     private function __construct() {
-        $this->request      = new Request();
-        $this->routing      = new Routing();
-        $this->controller   = new Controller();
-        $this->view         = new View();
     }
     
     private function __clone() {
     }
 
-    protected static function getInstance()
+    public static function getInstance()
     {
         if (null === self::$_instance) {
             self::$_instance = new self();
+            self::$_instance->init();
         }
         return self::$_instance; 
     }
     
+    protected function init(){
+        $this->getInstance()->request      = new Request();
+        $this->getInstance()->routing      = new Routing();
+        $this->getInstance()->controller   = new Controller();
+        $this->getInstance()->view         = new View();
+
+    }
+    
     public function run() {
-        echo print_r(self::getInstance());
+        $controller = self::getInstance()->getRouting()->getController();
+        $action = self::getInstance()->getRouting()->getAction();
+        self::getInstance()->getController()->run($controller,$action);
+    }
+
+    public function getRequest(){
+        return self::getInstance()->request;
+    }
+    public function getRouting(){
+        return self::getInstance()->routing;
+    }
+    public function getController(){
+        return self::getInstance()->controller;
     }
 }
