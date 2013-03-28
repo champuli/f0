@@ -6,4 +6,4 @@ echo "<pre>";
 //print_r($_REQUEST);
 
 //создаем экземпляр класса Core
-Core::getInstance()->run();
+Core::getInstance()->run($routing);

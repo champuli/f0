@@ -2,11 +2,13 @@
 class TagsController{
     public function indexAction()
     {
-        echo "Tags index";
+        $tags_array = Tags::getAllTags();
+        print_r($tags_array);
     }
     
-    public function listAction()
+    public function addAction()
     {
-        echo "Tags list";
+        $add_tags = 'blyadstvo';
+        Tags::addTags($add_tags);
     }
 }

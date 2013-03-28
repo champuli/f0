@@ -1,4 +1,5 @@
 <?php
+include 'routing_config.php';
     function __autoload($class_name) 
     {
         //class directories

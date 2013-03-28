@@ -23,8 +23,10 @@ class Core{
     }
     
     protected function init(){
+        global $routing;
+        $this->routing_config = $routing;
         $this->getInstance()->request      = new Request();
-        $this->getInstance()->routing      = new Routing();
+        $this->getInstance()->routing      = new Routing($this->routing_config);
         $this->getInstance()->controller   = new Controller();
         $this->getInstance()->view         = new View();
 
