@@ -35,7 +35,7 @@ class Routing{
         {
             $this->_action = $ex_u[2];
         }   
-        echo $this->_controller."  ".$this->_action;
+        //echo $this->_controller."  ".$this->_action;
     }
     
     public function getController(){

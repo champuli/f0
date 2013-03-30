@@ -23,5 +23,8 @@ class Controller{
         
         call_user_func(array($c,$m));
         
+       $view = Core::getInstance()->getView();
+       $html = $view->init($c->layout,$c->view,$c->data);
+       echo $html;
     }
 }

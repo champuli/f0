@@ -47,4 +47,7 @@ class Core{
     public function getController(){
         return self::getInstance()->controller;
     }
+    public function getView(){
+        return self::getInstance()->view;
+    }
 }

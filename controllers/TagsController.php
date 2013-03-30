@@ -1,14 +1,22 @@
 <?php
-class TagsController{
+class TagsController extends BaseController{
     public function indexAction()
     {
-        $tags_array = Tags::getAllTags();
-        print_r($tags_array);
+        $tags_array = Tags::getAll();
+        $this->data['tags']=$tags_array;
+        $this->view='tabl';
     }
     
     public function addAction()
     {
-        $add_tags = 'blyadstvo';
-        Tags::addTags($add_tags);
+        $tagid = Tags::addTags('zaebalas choto333');
+        //echo "<br>";
+        //echo $tagid;
+    }
+    
+    public function picsAction()
+    {
+        $pics_array = Pics::getAll();
+        //print_r($pics_array);
     }
 }
