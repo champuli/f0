@@ -19,4 +19,9 @@ class TagsController extends BaseController{
         $pics_array = Pics::getAll();
         //print_r($pics_array);
     }
+    public function checkAction()
+    {
+        print_r($_SERVER);
+	exit;
+    }
 }

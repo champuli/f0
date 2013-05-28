@@ -13,7 +13,8 @@ class View{
         }
         
         if (!file_exists($layout_file)) { 
-            die("View file $layout_file not exsist");
+            echo "View file $layout_file not exsist";
+          //die("View file $layout_file not exsist");
         }
         
         ob_start();

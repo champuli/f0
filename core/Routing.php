@@ -34,8 +34,10 @@ class Routing{
         if (!empty($ex_u[2]) && !$routing_from_config)
         {
             $this->_action = $ex_u[2];
-        }   
-        //echo $this->_controller."  ".$this->_action;
+        }
+//        echo "<pre>";
+//        print_r(debug_backtrace());
+//        echo $this->_controller."  ".$this->_action."<br/>";
     }
     
     public function getController(){
