@@ -25,6 +25,8 @@ class Controller{
             $m = "indexAction";
         }
         
+        
+        call_user_func(array($c,'preExecute'));
         call_user_func(array($c,$m));
        //echo $controller,$action;
        $view = Core::getInstance()->getView();

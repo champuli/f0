@@ -1,5 +1,6 @@
 <?php
-include 'routing_config.php';
+include_once 'routing_config.php';
+include_once 'configs/db.php';
     function __autoload($class_name) 
     {
         //class directories
@@ -7,7 +8,8 @@ include 'routing_config.php';
             'core/',
             'controllers/',
             'models/',
-            'views/'
+            'views/',
+            'lib/'
         );
         
         //for each directory

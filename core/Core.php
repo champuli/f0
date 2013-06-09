@@ -4,7 +4,9 @@ class Core{
     protected $routing;
     protected $controller;
     protected $view;
-    
+    protected $db = array();
+
+
     private static $_instance;
 
     private function __construct() {
@@ -23,15 +25,34 @@ class Core{
     }
     
     protected function init(){
-        global $routing;
+        global $routing, $list_mysql_db;        
         $this->routing_config = $routing;
         $this->getInstance()->request      = new Request();
         $this->getInstance()->routing      = new Routing($this->routing_config);
         $this->getInstance()->controller   = new Controller();
         $this->getInstance()->view         = new View();
 
+        foreach ($list_mysql_db as $name => $parts)
+        {
+            $connect = mysql_connect($parts['host'],$parts['user'],$parts['password']);
+            if(!($connect))
+            {
+                die("Could not connect: " . mysql_error());
+            }
+            else 
+            {
+                mysql_select_db($name, $connect) or die('Can\'t use bb : ' . mysql_error());
+                $this->db[$name] = $connect;
+            }
+        }
+
     }
     
+    public function getDb()
+    {
+        return $this->db;
+    }
+
     public function run() {
         $controller = self::getInstance()->getRouting()->getController();
         $action = self::getInstance()->getRouting()->getAction();
