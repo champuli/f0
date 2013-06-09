@@ -3,8 +3,8 @@ define('SHOW_ERRORS',true);
 
 class DefaultController extends BaseController{
     public function indexAction(){
-         //echo __FUNCTION__."<br />";
-        //echo "Hello";
+        $e = array(1,2,3,4);
+        pr($e);
     }
     
     public function queryAction()

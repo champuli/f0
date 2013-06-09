@@ -1,6 +1,8 @@
 <?php
 include_once 'routing_config.php';
 include_once 'configs/db.php';
+include_once 'lib/functions.php';
+
     function __autoload($class_name) 
     {
         //class directories

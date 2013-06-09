@@ -6,6 +6,6 @@ class BaseController{
     
     public function preExecute()
     {
-        echo "preExecute Hello";
+        //echo "preExecute Hello";
     }
 }
