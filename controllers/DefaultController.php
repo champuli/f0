@@ -3,8 +3,8 @@ define('SHOW_ERRORS',true);
 
 class DefaultController extends BaseController{
     public function indexAction(){
-         echo __FUNCTION__."<br />";
-        echo "Hello";
+         //echo __FUNCTION__."<br />";
+        //echo "Hello";
     }
     
     public function queryAction()
@@ -204,4 +204,3 @@ function mysql_q($q)
 }
 
 ?>
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

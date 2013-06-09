@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html>
     <head>
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Framework v0.0</title>
     </head>
     <body>
-        <!-- <h1>Huy Masika - prekrasen!!!</h1> -->
         <?php echo $content; ?>
         
         
