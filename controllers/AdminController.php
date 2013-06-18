@@ -1,9 +1,9 @@
 <?php
 class AdminController extends BaseController{
     public $layout = 'admin';
+
     public function indexAction()
     {
-        
     }
     
     public function loginAction()
@@ -15,6 +15,7 @@ class AdminController extends BaseController{
 
             $qu = "SELECT * FROM user WHERE login= '$log' and pass = '$pas'";
             $u = db('cms')->getRow($qu);
+         
             if($u)
             {
                 $_SESSION['is_login'] = $u['id'];

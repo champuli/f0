@@ -3,13 +3,11 @@ define('SHOW_ERRORS',true);
 
 class DefaultController extends BaseController{
     public function indexAction(){
-        $e = array(1,2,3,4);
-        pr($e);
     }
     
     public function queryAction()
     {
-         echo __FUNCTION__."<br />";
+        echo __FUNCTION__."<br />";
         $html = file_get_contents('http://m.avito.ru/items?category_id=24&location_id=637640');
         echo "<pre>";
         var_dump($html);

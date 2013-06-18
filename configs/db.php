@@ -1,6 +1,6 @@
 <?php
 $list_mysql_db = array(
-    'cms' => array(
+    'homework' => array(
         'host' => 'localhost',
         'user' => 'root',
         'password' => 'zapadlo222')

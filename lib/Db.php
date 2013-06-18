@@ -6,6 +6,7 @@ class Db
     {
         $core_db_conn = Core::getInstance()->getDb();
         $this->db_conn = $core_db_conn[$db_name];
+	mysql_query("SET NAMES utf8",$this->db_conn);
     }
     
     public function execute($sql)
