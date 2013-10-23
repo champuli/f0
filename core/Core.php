@@ -5,7 +5,7 @@ class Core{
     protected $controller;
     protected $view;
     protected $db = array();
-
+    protected $user;
 
     private static $_instance;
 
@@ -25,13 +25,7 @@ class Core{
     }
     
     protected function init(){
-        global $routing, $list_mysql_db;        
-        $this->routing_config = $routing;
-        $this->getInstance()->request      = new Request();
-        $this->getInstance()->routing      = new Routing($this->routing_config);
-        $this->getInstance()->controller   = new Controller();
-        $this->getInstance()->view         = new View();
-
+        global $routing, $list_mysql_db; 
         foreach ($list_mysql_db as $name => $parts)
         {
             $connect = mysql_connect($parts['host'],$parts['user'],$parts['password']);
@@ -41,11 +35,16 @@ class Core{
             }
             else 
             {
-                mysql_select_db($name, $connect) or die('Can\'t use bb : ' . mysql_error());
                 $this->db[$name] = $connect;
             }
         }
 
+        $this->routing_config = $routing;
+        $this->getInstance()->request      = new Request();
+        $this->getInstance()->routing      = new Routing($this->routing_config);
+        $this->getInstance()->controller   = new Controller();
+        $this->getInstance()->view         = new View();
+        $this->getInstance()->user         = new User();
     }
     
     public function getDb()
@@ -70,5 +69,8 @@ class Core{
     }
     public function getView(){
         return self::getInstance()->view;
+    }
+    public function getUser(){
+        return self::getInstance()->user;
     }
 }

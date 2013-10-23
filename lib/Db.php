@@ -6,18 +6,39 @@ class Db
     {
         $core_db_conn = Core::getInstance()->getDb();
         $this->db_conn = $core_db_conn[$db_name];
-	mysql_query("SET NAMES utf8",$this->db_conn);
+        mysql_select_db($db_name, $this->db_conn) or die('Can\'t use bb : ' . mysql_error());
+        mysql_query("SET NAMES utf8",$this->db_conn);
     }
-    
-    public function execute($sql)
+     
+    public function execute($sql,$params=array())
     {
-        return mysql_query($sql);
+        if (is_array($params) && !empty($params))
+        {
+            foreach ($params as $key => $value)
+            {
+                if (empty($value))
+                {
+                    echo "value for ".$key." is empty";exit;                    
+                }
+                if (is_numeric($value))
+                {
+                    $ins_value = $value;
+                }
+                else 
+                {
+                    $ins_value = "'".mysql_real_escape_string($value,$this->db_conn)."'";
+                }                
+                    $sql = str_replace(":$key:", $ins_value, $sql);
+                    echo $sql."</br>";
+            }
+        }
+        return mysql_query($sql,$this->db_conn);
     }
     
-    public function getAll($sql)
+    public function getAll($sql,$params=array())
     {
         $show_all_z = array();
-        $get_que = mysql_query($sql,$this->db_conn);
+        $get_que = $this->execute($sql,$params);
         
         while($show_get_all = mysql_fetch_assoc($get_que))
         {
@@ -25,11 +46,16 @@ class Db
         }
         return $show_all_z;
     }
-    public function getRow($sql)
+
+    public function getRow($sql,$params=array())
     {
-        $get_que = mysql_query($sql,$this->db_conn);
-        $show_get_all = mysql_fetch_assoc($get_que);
-        return $show_get_all;
-    }
+        $get_que = $this->execute($sql,$params);
+        if ($get_que)
+        {
+            $show_get_all = mysql_fetch_assoc($get_que);
+            return $show_get_all;
+        }
+        return false;
+    }    
 }
 

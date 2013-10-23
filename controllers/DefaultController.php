@@ -3,8 +3,17 @@ define('SHOW_ERRORS',true);
 
 class DefaultController extends BaseController{
     public function indexAction(){
+        $params = array(
+            'id' => 1,
+            'page_url' => 'test_huest',            
+        );
+        db('cms')->execute("select * from pages where id=:id: and page_url=:page_url:",$params);
     }
-    
+
+    public function infoAction(){
+        echo GetRealIp()."\n\n"; exit;
+    }
+
     public function queryAction()
     {
         echo __FUNCTION__."<br />";
@@ -16,7 +25,7 @@ class DefaultController extends BaseController{
     public function resolveAction()
     {
          echo __FUNCTION__."<br />";
-        require_once('phpQuery-onefile.php');
+        //require_once('phpQuery-onefile.php');
         
         $url = 'http://m.avito.ru/items?category_id=24&location_id=637640';
         $html = file_get_contents($url);
@@ -71,7 +80,7 @@ class DefaultController extends BaseController{
         //echo "<pre>";
         //print_r($show_all);
         
-        require_once('phpQuery-onefile.php');
+        //require_once('phpQuery-onefile.php');
         $part = 'http://m.avito.ru';
         foreach ($show_all as $ssul)
         {

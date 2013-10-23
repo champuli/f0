@@ -26,6 +26,19 @@ class Routing{
             }
         }
         
+        $cms_url = trim($exp_uri[0]);
+        $cms_url = substr($cms_url, 1);
+        $cms_url = addslashes($cms_url);
+        $result = db('cms')->getRow("select * from pages where url = '$cms_url'");
+        
+        if(!empty($result))
+        {
+            $this->_controller = "page";
+            $this->_action = "index";
+            $_REQUEST['page'] = $cms_url;
+            return;
+        }
+        
         if (!empty($ex_u[1]) && !$routing_from_config) 
         {
             $this->_controller = $ex_u[1];
@@ -35,9 +48,6 @@ class Routing{
         {
             $this->_action = $ex_u[2];
         }
-//        echo "<pre>";
-//        print_r(debug_backtrace());
-//        echo $this->_controller."  ".$this->_action."<br/>";
     }
     
     public function getController(){

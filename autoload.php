@@ -2,7 +2,7 @@
 include_once 'routing_config.php';
 include_once 'configs/db.php';
 include_once 'lib/functions.php';
-
+include_once 'lib/simple_image.php';
     function __autoload($class_name) 
     {
         //class directories
