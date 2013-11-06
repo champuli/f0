@@ -1,0 +1,99 @@
+
+a:hover {
+    color: #FFFFFF;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+a:visited { 
+    color: #D8EB2F;
+}
+
+#main {
+	/*border:1px solid red;*/
+	width: 900px;
+    margin-left: 100px;
+    margin-top: 100px;
+    min-height: 400px;
+    
+}
+
+#header {
+    /*border:1px solid green;*/
+    width: 100%;  
+    height: 60px;
+    padding: 5px;
+}
+
+#content {
+/*    border:1px solid blue;*/
+    width: 100%;
+    margin-top: 20px;
+    min-height: 200px;
+    float: left;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border-radius:10px;
+    color: #F8CC98;
+}
+
+.user_albums{
+    /*border:2px solid red;*/
+    float: left;
+    width: 60%;
+}
+
+.user_tags{
+    /*border: 2px solid green;*/
+    float: right;
+    width: 35%;
+    min-height: 200px;
+    padding-right: 10px;
+}
+
+#login_form{
+    margin-left: 30%;
+    margin-top: 10px;
+}
+
+.photo_and_delete_container {
+    height: 200px;
+    width: 230px;
+    float: left;
+    align: center;
+}
+
+.foto_container {
+    height: 110px;
+    width: 230px;
+    float: left;
+    align: center;
+}
+
+.delete_container {
+    height: 30px;
+    width: 230px;
+    float: left;
+    align: center;
+}
+
+#logout {
+    float: right; 
+    margin-right: 10px;
+}
+
+#header.a {
+}
+
+.album_cover {
+    float: left;
+    margin-left:10px;
+    margin-top: 10px;
+}
+
+.single_image_div {
+    border: 5px solid #27405C;
+    }
