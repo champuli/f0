@@ -1,3 +1,5 @@
 RewriteEngine on
 
+Allow from 178.150.18.33
+
 RewriteRule . index.php [L]

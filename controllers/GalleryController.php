@@ -42,13 +42,13 @@ class GalleryController extends BaseController{
         $this->view = 'load_pics_to_album';
         define('SITE_PATH',dirname(dirname(__FILE__)));
         
-        $sql = "select * from `album`";
-        $d = db('gallery')->execute($sql);
-        while($s = mysql_fetch_assoc($d))
-        {
-            $show_albums[] = $s;
-        }
-        $this->data = $show_albums;
+        //$sql = "select * from `album`";
+        //$d = db('gallery')->execute($sql);
+        //while($s = mysql_fetch_assoc($d))
+        //{
+        //    $show_albums[] = $s;
+        //}
+        //$this->data = $show_albums;
         
         
         if(isset($_POST) && !empty($_POST))
